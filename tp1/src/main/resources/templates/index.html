@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: header-title-fragment">
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container mt-5">
+		<h4>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h4>
+		<p class="h6">Selamat Datang di Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</p>
+		<hr/>
+		
+		<div class="container mt-5">
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+						<h6><Strong>Lihat</Strong> Data Penduduk Berdasarkan NIK</h6>
+					</div>
+					<form action="/penduduk" method="get">
+						<div class="row">
+							<label for="nik"><strong>Masukan Nomor Induk Kependudukan</strong></label>
+						</div>
+						<div class="row">
+							<div class="form-group">
+								<input type="text" name="nik" />
+							</div>
+						</div>
+						<div class="row">
+							<button type="submit" class="btn btn-primary">Lihat</button>
+						</div>
+					</form>
+					<div class="row mt-4">
+						<h7>Atau: </h7>
+					</div>
+					<div class="row mt-4">
+						<label for="nik"><strong>Tambah Penduduk Baru</strong></label>
+					</div>
+					<div class="row">
+						<input type="button" class="btn btn-primary" onclick="location.href='/penduduk/tambah'" value="Add Penduduk" />
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="row">
+						<h6><strong>Lihat</strong> Data Keluarga Berdasarkan NKK</h6>
+					</div>
+					<form action="/keluarga" method="get">
+						<div class="row">
+							<label for="nkk"><strong>Masukan Nomor Kartu Keluarga</strong></label>
+						</div>
+						<div class="row">
+							<div class="form-group">
+								<input type="text" name="nkk" />
+							</div>
+						</div>
+						<div class="row">
+							<button type="submit" class="btn btn-primary">Lihat</button>
+						</div>
+					</form>
+					<div class="row mt-4">
+						<h7>Atau: </h7>
+					</div>
+					<div class="row mt-4">
+						<label for="nik"><strong>Tambah Keluarga Baru</strong></label>
+					</div>
+					<div class="row mb-5">
+						<input type="button" class="btn btn-primary" onclick="location.href='/keluarga/tambah'" value="Add Keluarga" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

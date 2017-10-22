@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header-title-fragment">
+  <title th:text="${page_title}"></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/datatables/datatables.css"/>
+  <script type="text/javascript" src="/js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/datatables/datatables.js"></script>
+  <script type="text/javascript" src="/js/viewAll.js"></script>
+</head>
+<body>
+	<nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="#">SI Kependudukan</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-control="navbarSupportedContent"
+			aria-expanded="false"
+			aria-table="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class ="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">Cari Data</a>
+				</li>
+			</ul>
+		
+		</div>
+	</nav>
+	
+	<div th:fragment="footer">
+
+		<footer class="footer fixed-bottom">
+			<hr/>
+			<div class="container text-center">
+				
+				<h3 class="text-center mt-3 mb-3">
+					APAP Tutorial 6
+				</h3>
+			</div>		
+		</footer>
+	</div>
+</body>
+</html>

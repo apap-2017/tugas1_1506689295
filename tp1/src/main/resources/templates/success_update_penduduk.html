@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: header-title-fragment">
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container mt-5">	
+		<div class="row mt-4">
+			<h1 class="page-header">Sukses!</h1>
+		</div>
+		<div class="row mt-2">
+			<h4 th:text="'Penduduk dengan NIK ' +  ${nik_changed} + ' berhasil diupdate'"></h4>
+		</div>
+		<div class="row mt-2">
+			<h4 th:text="${nik_changed == nik_now} ? 'NiK tidak berubah' : 'NiK menjadi ' + ${nik_now}"></h4>
+		</div>
+		<hr/>
+	</div>
+</body>
+</html>

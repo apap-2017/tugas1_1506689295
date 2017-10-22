@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: header-title-fragment">
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-6">
+				<h4 th:text="'Lihat Data Penduduk: ' +  ${penduduk.nik}"></h4>
+			</div>
+			<div class="col-md-2">
+				<a type="button" class="btn btn-primary" th:href="'/penduduk/ubah/' + ${penduduk.nik}">Update Penduduk</a>
+			</div>
+		</div>
+		
+		<hr/>
+	
+		<table class="container table-hover">
+			<tr>
+				<td>NIK</td>
+				<td th:text="': ' + ${penduduk.nik}"></td>
+			</tr>
+			<tr>
+				<td>Nama</td>
+				<td th:text="': ' + ${penduduk.nama}"></td>
+			</tr>
+			<tr>
+				<td>Tempat/Tanggal Lahir</td>
+				<td th:text="': ' + ${penduduk.tempat_lahir} + ', ' + ${penduduk.tanggal_lahir}"></td>
+			</tr>
+			<tr>
+				<td>Alamat</td>
+				<td th:text="': ' + ${penduduk.alamat}"></td>
+			</tr>
+			<tr>
+				<td>RT/RW</td>
+				<td th:text="': ' + ${penduduk.rt} + '/' + ${penduduk.rw}"></td>
+			</tr>
+			<tr>
+				<td>Kelurahan/Desa</td>
+				<td th:text="': ' + ${penduduk.nama_kelurahan}"></td>
+			</tr>
+			<tr>
+				<td>Kecamatan</td>
+				<td th:text="': ' + ${penduduk.nama_kecamatan}"></td>
+			</tr>
+			<tr>
+				<td>Kota</td>
+				<td th:text="': ' + ${penduduk.nama_kota}"></td>
+			</tr>
+			<tr>
+				<td>Golongan Darah</td>
+				<td th:text="': ' + ${penduduk.golongan_darah}"></td>
+			</tr>
+			<tr>
+				<td>Agama</td>
+				<td th:text="': ' + ${penduduk.agama}"></td>
+			</tr>
+			<tr>
+				<td>Status Perkawinan</td>
+				<td th:text="': ' + ${penduduk.status_perkawinan}"></td>
+			</tr>
+			<tr>
+				<td>Pekerjaan</td>
+				<td th:text="': ' + ${penduduk.pekerjaan}"></td>
+			</tr>
+			<tr>
+				<td>Kewarganegaraan</td>
+				<td th:text="${penduduk.is_wni == 1} ? ': WNI' : ': WNA'"></td>
+			</tr>
+			<tr>
+				<td>Status Kematian</td>
+				<td th:text="${penduduk.is_wafat != 1} ? ': Masih Hidup' : ': Sudah Mati'"></td>
+			</tr>
+		</table>
+		<div class="row">
+			<div class="col-md-2">
+				<form th:object="${penduduk}" action="/penduduk/mati" method="post">
+					<div class="form-group">
+						<input class="form-control" th:field="*{nik}" type="hidden" name="nik" th:value="${penduduk.nik}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{nama}" type="hidden" name="nama" th:value="${penduduk.nama}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{tempat_lahir}" type="hidden" name="tempat_lahir" th:value="${penduduk.tempat_lahir}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{tanggal_lahir}" type="hidden" name="tanggal_lahir" th:value="${penduduk.tanggal_lahir}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{jenis_kelamin}" type="hidden" name="jenis_kelamin" th:value="${penduduk.jenis_kelamin}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{golongan_darah}" type="hidden" name="golongan_darah" th:value="${penduduk.golongan_darah}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{agama}" type="hidden" name="agama" th:value="${penduduk.agama}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{alamat}" type="hidden" name="alamat" th:value="${penduduk.alamat}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{rt}" type="hidden" name="rt" th:value="${penduduk.rt}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{rw}" type="hidden" name="rw" th:value="${penduduk.rw}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{nama_kelurahan}" type="hidden" name="nama_kelurahan" th:value="${penduduk.nama_kelurahan}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{nama_kecamatan}" type="hidden" name="nama_kecamatan" th:value="${penduduk.nama_kecamatan}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{nama_kota}" type="hidden" name="nama_kota" th:value="${penduduk.nama_kota}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{status_perkawinan}" type="hidden" name="status_perkawinan" th:value="${penduduk.status_perkawinan}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{pekerjaan}" type="hidden" name="pekerjaan" th:value="${penduduk.pekerjaan}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{is_wni}" type="hidden" name="is_wni" th:value="${penduduk.is_wni}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{is_wafat}" type="hidden" name="is_wafat" th:value="${penduduk.is_wafat}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{status_dalam_keluarga}" type="hidden" name="status_dalam_keluarga" th:value="${penduduk.status_dalam_keluarga}"/>
+					</div>
+					<div class="form-group">
+						<input class="form-control" th:field="*{id_keluarga}" type="hidden" name="id_keluarga" th:value="${penduduk.id_keluarga}"/>
+					</div>
+					<button type="submit" class="btn btn-danger" name="action" >Ubah Status Kematian</button>
+				</form>
+				
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

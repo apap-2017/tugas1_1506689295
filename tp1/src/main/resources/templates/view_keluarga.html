@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: header-title-fragment">
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="container mt-5">
+		<div class="row">
+			<div class="col-md-6">
+				<h4 th:text="'Lihat Data Keluarga: ' + ${keluarga.nomor_kk}"></h4>
+			</div>
+			<div class="col-md-6">
+				<a type="button" class="btn btn-primary" th:href="'/keluarga/ubah/' + ${keluarga.nomor_kk}">Update Keluarga</a>
+			</div>
+		</div>
+			
+		<hr/>
+	
+		<table class="container table-hover">
+			<tr>
+				<td>NKK</td>
+				<td th:text="': ' + ${keluarga.nomor_kk}"></td>
+			</tr>
+			<tr>
+				<td>Alamat</td>
+				<td th:text="': ' + ${keluarga.alamat}"></td>
+			</tr>
+			<tr>
+				<td>RT/RW</td>
+				<td th:text="': ' + ${keluarga.rt} + '/' + ${keluarga.rw}"></td>
+			</tr>
+			<tr>
+				<td>Kelurahan/Desa</td>
+				<td th:text="': ' + ${keluarga.nama_kelurahan}"></td>
+			</tr>
+			<tr>
+				<td>Kecamatan</td>
+				<td th:text="': ' + ${keluarga.nama_kecamatan}"></td>
+			</tr>
+			<tr>
+				<td>Kota</td>
+				<td th:text="': ' + ${keluarga.nama_kota}"></td>
+			</tr>
+			<tr>
+				<td>Validitas KK</td>
+				<td th:text="${keluarga.is_tidak_berlaku == 0} ? ': VALID' : ': SUDAH TIDAK VALID'"></td>
+			</tr>
+		</table>
+		<hr/>
+		
+		<table id="table_id">
+	     	<thead>
+	     		<tr class="text-center">
+		 			<th>No</th>
+		  			<th>Nama Lengkap</th>
+		  			<th>NIK</th>
+		  			<th>Jenis Kelamin</th>
+		  			<th>Tempat Lahir</th>
+		  			<th>Tanggal Lahir</th>
+		  			<th>Agama</th>
+		  			<th>Pekerjaan</th>
+		  			<th>Status Perkawinan</th>
+		  			<th>Status Dalam Keluarga</th>
+		  			<th>Kewarganegaraan</th>
+	 			</tr>
+	     	</thead>
+	     	<tbody>
+	     		<div th:each="penduduk, iterationStatus: ${keluarga.anggota_keluarga}">
+		  			<tr class="text-center">
+		  				<td th:text="${iterationStatus.count}"></td>
+		  				<td th:text="${penduduk.nama}"></td>
+		  				<td><a th:text="${penduduk.nik}" th:href="@{|/penduduk/${penduduk.nik}|}"></a></td>
+		  				<td th:text="${penduduk.jenis_kelamin != 0} ? 'Perempuan' : 'Laki-laki'"></td>
+		  				<td th:text="${penduduk.tempat_lahir}"></td>
+		  				<td th:text="${penduduk.tanggal_lahir}"></td>
+		  				<td th:text="${penduduk.agama}"></td>
+		  				<td th:text="${penduduk.pekerjaan}"></td>
+		  				<td th:text="${penduduk.status_perkawinan}"></td>
+		  				<td th:text="${penduduk.status_dalam_keluarga}"></td>
+		  				<td th:text="${penduduk.is_wni == 1} ? 'WNI' : 'WNA'"></td>
+		  			</tr>
+	      		</div>
+	     	</tbody>
+		</table>
+	</div>
+</body>
+</html>
